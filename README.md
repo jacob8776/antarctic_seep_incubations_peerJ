@@ -2,6 +2,8 @@
 
 Analysis pipeline for Antarctic seep sediment incubations: 16S amplicon + shotgun metagenomics, methane/oxygen manipulation across depths and sites (Cinder Cones Seep, Jetty), 2022 and 2023 field seasons.
 
+This github is lacking large files required to reproduce its corresponding manuscript. To access the complete repository, please download the archived version from Zenodo (doi: 10.5281/zenodo.21157354). 
+
 ### Layout
 
 ```
