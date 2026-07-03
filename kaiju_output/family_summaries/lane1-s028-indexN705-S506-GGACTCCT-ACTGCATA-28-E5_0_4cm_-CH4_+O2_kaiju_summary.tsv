@@ -1,0 +1,4 @@
+file	percent	reads	taxon_id	taxon_name
+/home/micro/wynneja/jacob/metagenome_experiments/antarctica_experiments/kaiju_annotation/short_annotations/lane1-s028-indexN705-S506-GGACTCCT-ACTGCATA-28-McM23_E12_TF_-CH4_O2_S28_kaiju.out	0.000000	0	10239	Viruses
+/home/micro/wynneja/jacob/metagenome_experiments/antarctica_experiments/kaiju_annotation/short_annotations/lane1-s028-indexN705-S506-GGACTCCT-ACTGCATA-28-McM23_E12_TF_-CH4_O2_S28_kaiju.out	0.000000	0	NA	cannot be assigned to a (non-viral) family
+/home/micro/wynneja/jacob/metagenome_experiments/antarctica_experiments/kaiju_annotation/short_annotations/lane1-s028-indexN705-S506-GGACTCCT-ACTGCATA-28-McM23_E12_TF_-CH4_O2_S28_kaiju.out	-nan	0	NA	unclassified

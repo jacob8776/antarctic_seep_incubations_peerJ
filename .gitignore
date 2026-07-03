@@ -1,0 +1,14 @@
+.DS_Store
+.Rhistory
+
+# raw reads
+*.fastq.gz
+updated_16s_run/raw/
+
+# QIIME2/SILVA reference files (large, regenerable via scripts/step_2_16S_processing)
+updated_16s_run/silva/
+updated_16s_run/demux-single-end.qza
+updated_16s_run/silva-138.1-ssu-nr99-515f-806r-classifier.qza
+
+# raw DIAMOND output vs cycDB (large, regenerable via scripts/step_9_metagenomic_function)
+cycdb_diamond_output/*.tsv
