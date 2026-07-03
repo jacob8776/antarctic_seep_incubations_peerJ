@@ -128,7 +128,7 @@ final_plot <- p_main + p_strip + plot_layout(widths = c(10, 0.5))
 print(final_plot)
 
 ggsave("../figures/figure2_dic_rates.png", plot = final_plot, width = 5, height = 5, dpi = 300)
-ggsave("../figures/figure2_dic_rates.pdf", plot = final_plot, width = 5, height = 5, dpi = 300)
+ggsave("../figures/figure2_dic_rates.pdf", plot = final_plot, width = 5, height = 5, dpi = 300, device = cairo_pdf)
 
 
 # --- Supplementary table: DIC change per pairing (INCLUDING FSWC controls) -----
@@ -153,4 +153,4 @@ rownames(supp_table) <- NULL
 print(supp_table)
 
 # --- Supplementary CSV ---------------------------------------------------------
-write.csv(supp_table, "../supplementary/dic_rates_table_S2.csv", row.names = FALSE)
+write.csv(supp_table, "../supplementary/tableS5_dic_rates.csv", row.names = FALSE)

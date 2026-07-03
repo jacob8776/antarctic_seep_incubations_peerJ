@@ -55,14 +55,13 @@ sample_data(physeq_genus_rel)$Year <- factor(sample_data(physeq_genus_rel)$Year)
 sample_data(physeq_genus_rel)$Methane[is.na(sample_data(physeq_genus_rel)$Methane)] <- "T0"
 sample_data(physeq_genus_rel)$Oxygen[is.na(sample_data(physeq_genus_rel)$Oxygen)]   <- "T0"
 
-# ant_exp_map_MA.csv has a blank (not NA) Methane value for this sample, plus
-# an Oxygen data-entry error (says "Yes", but the sample's own name says
-# "-O2"/no oxygen added) -- same known gap already corrected for this sample
-# in step_9's pathway heatmap and step_5's kaiju PCoA. A blank string isn't
-# caught by is.na() above, which is why this one point was showing up
-# without a valid Methane group.
-sample_data(physeq_genus_rel)["E2R1_6_9cm_+CH4_-O2", "Methane"] <- "Yes"
-sample_data(physeq_genus_rel)["E2R1_6_9cm_+CH4_-O2", "Oxygen"]  <- "No"
+# ant_exp_map_MA.csv has a blank (not NA) Methane value for this sample. A
+# blank string isn't caught by is.na() above, which is why this one point
+# was showing up without a valid Methane group. (Oxygen was previously
+# force-set to "No" here based on the sample's old, mislabeled name
+# ("-O2"); ant_exp_map_MA.csv's own Oxygen="Yes" was correct all along --
+# the name has been fixed upstream in step_6's sample_id_map instead.)
+sample_data(physeq_genus_rel)["E2R1_6_9cm_+CH4_+O2", "Methane"] <- "Yes"
 
 ord_pcoa <- ordinate(physeq_genus_rel, method = "PCoA", distance = "bray")
 
@@ -114,7 +113,7 @@ ggsave(
 )
 ggsave(
   filename = file.path(supplementary_dir, "FigureS1_PCoA_plot_genus_16s.pdf"),
-  plot = layout_all, scale = 1, width = 15, height = 11, dpi = 600
+  plot = layout_all, scale = 1, width = 15, height = 11, dpi = 600, device = cairo_pdf
 )
 
 # =============================================================================

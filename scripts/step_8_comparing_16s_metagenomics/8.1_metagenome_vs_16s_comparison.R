@@ -411,7 +411,7 @@ p_bars <- ggplot(taxa_counts_combined,
 ggsave(file.path(figures_dir, "Figure7_ABC_barplot_distinct_taxa.png"), p_bars,
        width = 12, height = 5, dpi = 600, bg = "white")
 ggsave(file.path(figures_dir, "Figure7_ABC_barplot_distinct_taxa.pdf"), p_bars,
-       width = 12, height = 5, dpi = 600, bg = "white")
+       width = 12, height = 5, dpi = 600, bg = "white", device = cairo_pdf)
 
 # ---- Faceted heatmap: detection across order / family / genus ----
 
@@ -574,7 +574,7 @@ p_heatmap <- ggplot() +
 ggsave(file.path(figures_dir, "Figure7_DEF_heatmap_detection.png"), p_heatmap,
        width = 12, height = 11, dpi = 600, bg = "white")
 ggsave(file.path(figures_dir, "Figure7_DEF_heatmap_detection.pdf"), p_heatmap,
-       width = 12, height = 11, dpi = 600, bg = "white")
+       width = 12, height = 11, dpi = 600, bg = "white", device = cairo_pdf)
 
 message("Done! Two faceted plots saved to ", figures_dir, ":")
 message("  barplot_distinct_taxa.png")

@@ -113,5 +113,5 @@ ggsave(
 )
 ggsave(
   filename = file.path(supplementary_dir, "FigureS4_methanotrophs_genus_16s.pdf"),
-  plot = final_plot, width = 16, height = 9, dpi = 600
+  plot = final_plot, width = 16, height = 9, dpi = 600, device = cairo_pdf
 )

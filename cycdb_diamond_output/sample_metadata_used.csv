@@ -14,9 +14,9 @@ E1R2_6_9cm_+CH4_+O2,22,Yes,Yes,4,6_9,deep,CCS,986.35,Yes
 E1T0_0_3cm,22,NA,NA,4,0_3,surface,CCS,NA,NA
 E1T0_3_6cm,22,NA,NA,4,3_6,deep,CCS,NA,NA
 E1T0_6-9cm,22,NA,NA,4,6_9,deep,CCS,NA,NA
-E2R1_6_9cm_+CH4_-O2,22,NA,Yes,5,6_9,deep,CCS,1962.119,Yes
-E2R2_6_9cm_+CH4_-O2,22,Yes,Yes,5,6_9,deep,CCS,1155.805,Yes
-E2R3_6_9cm_+CH4_-O2,22,Yes,Yes,5,6_9,deep,CCS,1957.122,Yes
+E2R1_6_9cm_+CH4_+O2,22,NA,Yes,5,6_9,deep,CCS,1962.119,Yes
+E2R2_6_9cm_+CH4_+O2,22,Yes,Yes,5,6_9,deep,CCS,1155.805,Yes
+E2R3_6_9cm_+CH4_+O2,22,Yes,Yes,5,6_9,deep,CCS,1957.122,Yes
 E3_0_3cm_+CH4_+O2,22,Yes,Yes,1,0_3,surface,Jetty,16.565,Yes
 E3_0_3cm_-CH4_+O2,22,No,Yes,1,0_3,surface,Jetty,4.95,NA
 E4_0_3cm_+CH4_+O2,22,Yes,Yes,3,0_3,surface,CCS,52.249,Yes

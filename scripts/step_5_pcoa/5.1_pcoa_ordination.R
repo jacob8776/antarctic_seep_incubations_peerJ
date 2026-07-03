@@ -57,11 +57,12 @@ sample_data(physeq_genus_rel)$Year <- factor(sample_data(physeq_genus_rel)$Year)
 sample_data(physeq_genus_rel)$Methane[is.na(sample_data(physeq_genus_rel)$Methane)] <- "T0"
 sample_data(physeq_genus_rel)$Oxygen[is.na(sample_data(physeq_genus_rel)$Oxygen)]   <- "T0"
 
-# metadata_ac_new.csv has an Oxygen data-entry error for this sample (says
-# "Yes", but the sample's own name says "-O2"/no oxygen added) -- same known
-# gap already corrected for this sample in step_9's pathway heatmap.
-sample_data(physeq_genus_rel)["E2R1_6_9cm_+CH4_-O2", "Methane"] <- "Yes"
-sample_data(physeq_genus_rel)["E2R1_6_9cm_+CH4_-O2", "Oxygen"]  <- "No"
+# This sample needed an explicit Methane fix here (see step_4's 4.3 for the
+# same pattern). Oxygen was previously force-set to "No" here based on the
+# sample's old, mislabeled name ("-O2"); metadata_ac_new.csv's own
+# Oxygen="Yes" was correct all along -- the name has been fixed upstream in
+# step_6's sample_id_map instead.
+sample_data(physeq_genus_rel)["E2R1_6_9cm_+CH4_+O2", "Methane"] <- "Yes"
 
 ord_pcoa <- ordinate(physeq_genus_rel, method = "PCoA", distance = "bray")
 
@@ -102,7 +103,7 @@ ggsave(
 )
 ggsave(
   filename = file.path(project_root, "supplementary", "FigureS5_PCoA_plot_genus_supplement.pdf"),
-  plot = layout_treatment, scale = 1, width = 10, height = 11, dpi = 600
+  plot = layout_treatment, scale = 1, width = 10, height = 11, dpi = 600, device = cairo_pdf
 )
 
 # =============================================================================
@@ -130,7 +131,7 @@ ggsave(
 )
 ggsave(
   filename = file.path(figures_dir, "Figure3_PCoA_plot_genus_depth_site.pdf"),
-  plot = layout_depth_site, scale = 1, width = 10, height = 11, dpi = 600
+  plot = layout_depth_site, scale = 1, width = 10, height = 11, dpi = 600, device = cairo_pdf
 )
 
 # =============================================================================

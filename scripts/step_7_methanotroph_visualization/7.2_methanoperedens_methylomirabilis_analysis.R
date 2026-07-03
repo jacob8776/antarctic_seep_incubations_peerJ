@@ -133,7 +133,7 @@ ggsave(
 )
 ggsave(
   file.path(figures_dir, "Figure6_methanoperedens_methylomirabilis.pdf"),
-  final_plot, width = 12, height = 10, dpi = 300
+  final_plot, width = 12, height = 10, dpi = 300, device = cairo_pdf
 )
 
 ct_s <- suppressWarnings(cor.test(wide$mp, wide$mm, method = "spearman"))

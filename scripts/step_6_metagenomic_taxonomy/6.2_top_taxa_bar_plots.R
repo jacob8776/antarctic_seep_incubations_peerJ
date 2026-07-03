@@ -101,5 +101,5 @@ methanogens <- plot_top_taxa_bar(
 
 ggsave(file.path(figures_dir, "Figure4A_bac_rank_met.png"), plot = p_bac_rank, scale = 1, width = 10, height = 7, dpi = 600)
 ggsave(file.path(figures_dir, "Figure4B_ar_rank_met.png"),  plot = p_ar_rank,  scale = 1, width = 10, height = 7, dpi = 600)
-ggsave(file.path(figures_dir, "Figure4A_bac_rank_met.pdf"), plot = p_bac_rank, scale = 1, width = 10, height = 7, dpi = 600)
-ggsave(file.path(figures_dir, "Figure4B_ar_rank_met.pdf"),  plot = p_ar_rank,  scale = 1, width = 10, height = 7, dpi = 600)
+ggsave(file.path(figures_dir, "Figure4A_bac_rank_met.pdf"), plot = p_bac_rank, scale = 1, width = 10, height = 7, dpi = 600, device = cairo_pdf)
+ggsave(file.path(figures_dir, "Figure4B_ar_rank_met.pdf"),  plot = p_ar_rank,  scale = 1, width = 10, height = 7, dpi = 600, device = cairo_pdf)

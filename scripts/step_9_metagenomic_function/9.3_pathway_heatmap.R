@@ -70,12 +70,14 @@ col_annot$Oxygen[is.na(col_annot$Oxygen)]   <- "T0"
 col_annot$Methane <- factor(col_annot$Methane, levels = c("No", "Yes", "T0"))
 col_annot$Oxygen  <- factor(col_annot$Oxygen,  levels = c("No", "Yes", "T0"))
 
-# ant_exp_map_MA.csv has a data-entry gap for this sample (Methane blank,
-# Oxygen wrong); its own display name says +CH4/-O2, so fix it here for the
-# annotation bar. Not applied upstream in 8.2 -- that sample was already
-# excluded from the DESeq2 models by the Methane completeness filter there.
-col_annot["E2R1_6_9cm_+CH4_-O2", "Methane"] <- "Yes"
-col_annot["E2R1_6_9cm_+CH4_-O2", "Oxygen"]  <- "No"
+# ant_exp_map_MA.csv has a blank Methane value for this sample; fix it here
+# for the annotation bar. Not applied upstream in 8.2 -- that sample was
+# already excluded from the DESeq2 models by the Methane completeness
+# filter there. (Oxygen was previously force-set to "No" here based on the
+# sample's old, mislabeled name ("-O2"); the sample's actual Oxygen
+# treatment is "Yes", and the name has been fixed upstream in step_6's
+# sample_id_map instead.)
+col_annot["E2R1_6_9cm_+CH4_+O2", "Methane"] <- "Yes"
 
 ann_colors$Methane <- c(No = "#cccccc", Yes = "#000000", T0 = "#8856a7")
 ann_colors$Oxygen  <- c(No = "#cccccc", Yes = "#1f78b4", T0 = "#8856a7")
@@ -144,7 +146,7 @@ draw(
 )
 dev.off()
 
-pdf(file.path(figures_dir, "Figure8_pathway_heatmap.pdf"), width = 20, height = 16)
+cairo_pdf(file.path(figures_dir, "Figure8_pathway_heatmap.pdf"), width = 20, height = 16)
 draw(
   ht,
   heatmap_legend_side    = "bottom",
