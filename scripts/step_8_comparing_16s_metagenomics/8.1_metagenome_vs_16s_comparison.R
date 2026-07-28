@@ -645,13 +645,13 @@ supp_table_summary <- supp_table_long %>%
 print(supp_table_summary, n = 100)
 
 write.csv(supp_table_summary,
-          file.path(supplementary_dir, "TableS6_supplementary_methanotroph_genus_summary.csv"),
+          file.path(supplementary_dir, "TableS7_supplementary_methanotroph_genus_summary.csv"),
           row.names = FALSE)
 write.csv(supp_table_long %>% pivot_wider(
   names_from = sample,
   values_from = c(reads, rel_abund_pct),
   values_fill = 0),
-  file.path(supplementary_dir, "TableS7_supplementary_methanotroph_genus_per_sample.csv"),
+  file.path(supplementary_dir, "TableS8_supplementary_methanotroph_genus_per_sample.csv"),
   row.names = FALSE)
 
 message("Supplementary tables saved to ", supplementary_dir, ":")

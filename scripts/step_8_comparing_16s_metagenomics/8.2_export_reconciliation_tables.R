@@ -66,8 +66,8 @@ lineage_table <- genus_to_correct_lineage %>%
     `Corrected family` = correct_family
   )
 
-synonyms_path <- file.path(supplementary_dir, "TableS3_supplementary_taxonomy_reconciliation_synonyms.csv")
-lineage_path  <- file.path(supplementary_dir, "TableS4_supplementary_taxonomy_reconciliation_lineage_corrections.csv")
+synonyms_path <- file.path(supplementary_dir, "TableS5_supplementary_taxonomy_reconciliation_synonyms.csv")
+lineage_path  <- file.path(supplementary_dir, "TableS6_supplementary_taxonomy_reconciliation_lineage_corrections.csv")
 
 write.csv(synonyms_table, synonyms_path, row.names = FALSE)
 write.csv(lineage_table,  lineage_path,  row.names = FALSE)
