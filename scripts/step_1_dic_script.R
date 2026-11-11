@@ -153,4 +153,4 @@ rownames(supp_table) <- NULL
 print(supp_table)
 
 # --- Supplementary CSV ---------------------------------------------------------
-write.csv(supp_table, "../supplementary/tableS3_dic_rates.csv", row.names = FALSE)
+write.csv(supp_table, "../supplementary/tableS2_dic_rates.csv", row.names = FALSE)

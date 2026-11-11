@@ -408,9 +408,9 @@ p_bars <- ggplot(taxa_counts_combined,
     legend.key.size = unit(14, "pt")
   )
 
-ggsave(file.path(figures_dir, "Figure7_ABC_barplot_distinct_taxa.png"), p_bars,
+ggsave(file.path(supplementary_dir, "FigureS6_barplot_distinct_taxa.png"), p_bars,
        width = 12, height = 5, dpi = 600, bg = "white")
-ggsave(file.path(figures_dir, "Figure7_ABC_barplot_distinct_taxa.pdf"), p_bars,
+ggsave(file.path(supplementary_dir, "FigureS6_barplot_distinct_taxa.pdf"), p_bars,
        width = 12, height = 5, dpi = 600, bg = "white", device = cairo_pdf)
 
 # ---- Faceted heatmap: detection across order / family / genus ----
@@ -571,9 +571,9 @@ p_heatmap <- ggplot() +
   ) +
   guides(fill = guide_legend(nrow = 1))
 
-ggsave(file.path(figures_dir, "Figure7_DEF_heatmap_detection.png"), p_heatmap,
+ggsave(file.path(figures_dir, "Figure7_ABC_heatmap_detection.png"), p_heatmap,
        width = 12, height = 11, dpi = 600, bg = "white")
-ggsave(file.path(figures_dir, "Figure7_DEF_heatmap_detection.pdf"), p_heatmap,
+ggsave(file.path(figures_dir, "Figure7_ABC_heatmap_detection.pdf"), p_heatmap,
        width = 12, height = 11, dpi = 600, bg = "white", device = cairo_pdf)
 
 message("Done! Two faceted plots saved to ", figures_dir, ":")
@@ -645,13 +645,13 @@ supp_table_summary <- supp_table_long %>%
 print(supp_table_summary, n = 100)
 
 write.csv(supp_table_summary,
-          file.path(supplementary_dir, "TableS7_supplementary_methanotroph_genus_summary.csv"),
+          file.path(supplementary_dir, "TableS5_supplementary_methanotroph_genus_summary.csv"),
           row.names = FALSE)
 write.csv(supp_table_long %>% pivot_wider(
   names_from = sample,
   values_from = c(reads, rel_abund_pct),
   values_fill = 0),
-  file.path(supplementary_dir, "TableS8_supplementary_methanotroph_genus_per_sample.csv"),
+  file.path(supplementary_dir, "TableS6_supplementary_methanotroph_genus_per_sample.csv"),
   row.names = FALSE)
 
 message("Supplementary tables saved to ", supplementary_dir, ":")

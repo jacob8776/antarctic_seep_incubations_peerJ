@@ -6,7 +6,7 @@
 
 Standalone. DIC (d13C) change per +CH4/-CH4 pairing, plotted by year with a site color strip. Also writes a supplementary table.
 Run in RStudio (uses `rstudioapi` for its working directory), not `Rscript`.
-Output: `figures/figure2_dic_rates.png/.pdf`, `supplementary/tableS5_dic_rates.csv`.
+Output: `figures/figure2_dic_rates.png/.pdf`, `supplementary/tableS2_dic_rates.csv`.
 
 ## step_2_16S_processing
 
