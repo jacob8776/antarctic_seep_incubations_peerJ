@@ -382,8 +382,12 @@ theme_pub <- function(base_size = 10) {
 # FACETED PLOTS -- one bar plot, one heatmap
 # =============================================================================
 
-# ---- Faceted bar plot: distinct taxa by rank ----
-p_bars <- ggplot(taxa_counts_combined,
+# ---- Bar plot: distinct taxa by rank (one panel per rank, tagged A/B/C) ----
+# Panel order matches what facet_wrap would use
+bar_ranks <- levels(factor(taxa_counts_combined$rank))
+
+make_rank_bars <- function(r, show_y_title) {
+ggplot(filter(taxa_counts_combined, rank == r),
                  aes(x = domain, y = n_distinct, fill = method)) +
   geom_col(position = position_dodge(width = 0.8), width = 0.7,
            color = "black", linewidth = 0.3) +
@@ -394,7 +398,8 @@ p_bars <- ggplot(taxa_counts_combined,
   scale_fill_manual(values = c("16S rRNA"     = "#2c7fb8",
                                "Metagenomics" = "#d95f0e")) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.18))) +
-  labs(y = "Number of distinct taxa", x = NULL, fill = NULL) +
+  labs(y = if (show_y_title) "Number of distinct taxa" else NULL,
+       x = NULL, fill = NULL) +
   theme_pub() +
   theme(
     axis.text.x    = element_text(face = "bold", size = 12),
@@ -408,6 +413,16 @@ p_bars <- ggplot(taxa_counts_combined,
     legend.text    = element_text(size = 11),
     legend.key.size = unit(14, "pt")
   )
+}
+
+p_bars <- wrap_plots(lapply(seq_along(bar_ranks),
+                            function(i) make_rank_bars(bar_ranks[i], i == 1)),
+                     nrow = 1) +
+  plot_layout(guides = "collect") +
+  plot_annotation(tag_levels = "A") &
+  theme(legend.position      = "top",
+        legend.justification = "left",
+        plot.tag             = element_text(face = "bold", size = 16))
 
 ggsave(file.path(supplementary_dir, "FigureS6_barplot_distinct_taxa.png"), p_bars,
        width = 12, height = 5, dpi = 600, bg = "white")
