@@ -37,6 +37,7 @@ library(stringr)
 library(tibble)
 library(ggplot2)
 library(phyloseq)
+library(patchwork)
 
 # sample_id_map / kaiju_phyloseq_path / figures_dir
 source(file.path(taxonomy_dir, "constants.R"))
@@ -512,14 +513,16 @@ annot_plot <- annot_data %>%
   mutate(fill_val = metabolism,
          y_pos = 0.15)
 
-p_heatmap <- ggplot() +
+# One panel per rank, stacked with patchwork so each gets an A/B/C tag
+make_rank_heatmap <- function(r) {
+ggplot() +
   # Main detection tiles
-  geom_tile(data = det_plot,
+  geom_tile(data = filter(det_plot, rank == r),
             aes(x = taxon, y = y_pos, fill = fill_val),
             color = "white", linewidth = 0.8,
             height = 0.9) +
   # Thin annotation strip
-  geom_tile(data = annot_plot,
+  geom_tile(data = filter(annot_plot, rank == r),
             aes(x = taxon, y = y_pos, fill = fill_val),
             color = "white", linewidth = 0.4,
             height = 0.25) +
@@ -570,6 +573,14 @@ p_heatmap <- ggplot() +
     plot.margin = margin(t = 6, r = 10, b = 6, l = 6)
   ) +
   guides(fill = guide_legend(nrow = 1))
+}
+
+p_heatmap <- wrap_plots(lapply(levels(det_plot$rank), make_rank_heatmap), ncol = 1) +
+  plot_layout(guides = "collect") +
+  plot_annotation(tag_levels = "A") &
+  theme(legend.position      = "top",
+        legend.justification = "left",
+        plot.tag             = element_text(face = "bold", size = 16))
 
 ggsave(file.path(figures_dir, "Figure7_ABC_heatmap_detection.png"), p_heatmap,
        width = 12, height = 11, dpi = 600, bg = "white")
